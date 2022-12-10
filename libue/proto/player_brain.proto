@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package player;
+
+import "player_brain/common.proto";
+
+service PlayerBrain {
+    rpc RpcCall (Request) returns (Response) {
+    }
+}
+
+message Request {
+    oneof request {
+        // Simulation setup
+        RequestRestart restart = 1;
+
+        // During simulation
+        RequestObservation observation = 2; // Snapshot of the current simulation state.
+        RequestAction action = 3; // Executes an action.
+    }
+}
+
+message Response {
+    oneof response {
+        ResponseRestart restart = 1;
+
+        ResponseObservation observation = 2;
+        ResponseAction action = 3;
+    }
+}
+
+message RequestRestart {
+}
+
+message ResponseRestart {
+}
+
+message RequestObservation {
+    Entity request = 1;
+}
+
+message ResponseObservation {
+    Entity observation = 1;
+}
+
+message RequestAction {
+    Entity request = 1;
+}
+
+message ResponseAction {
+    Entity observation = 1; // optional, usually can be instead by response_observation
+}

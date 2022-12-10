@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package player;
+
+message Field {
+    enum FVType {
+        FVT_LONG = 0;
+        FVT_LONG_ARRAY = 1;
+        FVT_DOUBLE = 2;
+        FVT_DOUBLE_ARRAY = 3;
+        FVT_BYTES = 4;
+        FVT_BYTES_ARRAY = 5;
+    }
+
+    string name = 1;
+    FVType type = 2;
+    int32 u_type = 3; // user generate type
+
+    repeated int64 iv = 4;
+    repeated double dv = 5;
+    repeated bytes bv = 6;
+}
+
+message Entity {
+    string name = 1;
+
+    repeated Field fields = 2;
+    repeated Entity entities = 3;
+}
