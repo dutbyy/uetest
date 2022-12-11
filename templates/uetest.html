@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html">
+    <script src = "static/uetest.js" type="text/javascript"> </script>
+    <style>
+        pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+    </style>
+    <style>
+        textarea {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+    </style>
+</head>
+<title>ue环境测试客户端</title>
+
+<body style="width:100%;">
+    <h1 align="center" > UE4-GRpc Test</h1>
+    <hr color="pink">
+    <div name="prepare" style="width:100%; overflow:auto">
+        <div name="action_template" style="width:50%; float:left;"> 
+            <form name="action_template">
+                <input type="button" onclick="gen_template()" id='gen_template_action_button' value="生成动作模板">
+                <input type="button" onclick="clear_template()" id='clean_template' value="清空动作模板">
+                <div id='template_actions' style="width:80%;"> </div>
+            </form>
+        </div>
+        <div name="connector" style="width:50%; float:left;"> 
+            <form name="myForm" > 
+                <label for="host">host:</label> <input type="text" size="16" style="font-family:Consolas;font-size:16" id="host" name="host" value="127.0.0.1">
+                <label for="port">port:</label> <input type="text" size="6"  style="font-family:Consolas;font-size:16" id="port" name="port" value="50051">
+                <input type="button" onclick="connect(host, port)" id="conn_button" value="连接">
+                <input type="button" onclick="disconnect()" id='disconn_button' disabled=1 value="断开">
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="cell">
+        <form name="myForm2" style="width:100%; overflow:auto">  
+            <div name="uerequest"  style="width:50%; float:left"> 
+                <label for="input">Request </label>  
+                <input type="button"  onclick="send_request(jsrequest)" value="提交"> </input> 
+                <input type="button"  onclick="clear_in()" value="清空"> </input> 
+                <br>
+                <textarea type="text" style="font-family:Consolas;font-size:20;height:400px;width:80%;word-break:break-all" id='input' size="40" name="jsrequest"> </textarea>
+            </div>
+            <div name="ueresponse" style="width:50%; float:right"> 
+                <span>Response </span> 
+                <input type="button"  onclick="clear_out()" value="清空"> </input> 
+                <br>
+                <!-- <textarea type='text' style = "font-family:Consolas;font-size:20;height:200px;width:80%;word-break:break-all;" id='output'>  </textarea> -->
+                <pre type='text' style = "font-family:Consolas;font-size:20;height:400px;width:80%;word-break:break-all;" id='output'>  </pre> 
+            </div>
+        </form>
+    </div>
+ 
+</body>
+</html>
+

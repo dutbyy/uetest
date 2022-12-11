@@ -33,7 +33,7 @@ def root():
     global uid
     uid += 1
     username = f'user-{uid}'
-    rsp = make_response(render_template('test.html'))
+    rsp = make_response(render_template('uetest.html'))
     rsp.set_cookie('username', username)
     return rsp
 

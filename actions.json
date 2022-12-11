@@ -15,5 +15,107 @@
 	},
 	"态势": {
 		"command": "observation"
+	},
+	"攻击1": {
+		"command": "action",
+		"action": "attack",
+		"user_id": 0,
+		"target_id": 100
+	},
+	"移动1": {
+		"command": "action",
+		"action": "move",
+		"position": [1,2,3]
+	},
+	"重置1": {
+		"command": "reset"
+	},
+	"态势1": {
+		"command": "observation"
+	},
+	"攻击2": {
+		"command": "action",
+		"action": "attack",
+		"user_id": 0,
+		"target_id": 100
+	},
+	"移动2": {
+		"command": "action",
+		"action": "move",
+		"position": [1,2,3]
+	},
+	"重置2": {
+		"command": "reset"
+	},
+	"态势2": {
+		"command": "observation"
+	},
+	"攻击3": {
+		"command": "action",
+		"action": "attack",
+		"user_id": 0,
+		"target_id": 100
+	},
+	"移动3": {
+		"command": "action",
+		"action": "move",
+		"position": [1,2,3]
+	},
+	"重置3": {
+		"command": "reset"
+	},
+	"态势3": {
+		"command": "observation"
+	},
+	"攻击4": {
+		"command": "action",
+		"action": "attack",
+		"user_id": 0,
+		"target_id": 100
+	},
+	"移动4": {
+		"command": "action",
+		"action": "move",
+		"position": [1,2,3]
+	},
+	"重置4": {
+		"command": "reset"
+	},
+	"态势4": {
+		"command": "observation"
+	},
+	"攻击5": {
+		"command": "action",
+		"action": "attack",
+		"user_id": 0,
+		"target_id": 100
+	},
+	"移动6": {
+		"command": "action",
+		"action": "move",
+		"position": [1,2,3]
+	},
+	"重置6": {
+		"command": "reset"
+	},
+	"态势6": {
+		"command": "observation"
+	},
+	"攻击7": {
+		"command": "action",
+		"action": "attack",
+		"user_id": 0,
+		"target_id": 100
+	},
+	"移动7": {
+		"command": "action",
+		"action": "move",
+		"position": [1,2,3]
+	},
+	"重置7": {
+		"command": "reset"
+	},
+	"态势7": {
+		"command": "observation"
 	}
 }
