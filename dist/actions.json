@@ -1,19 +1,14 @@
 {
-	"攻击": {
-		"command": "action",
-		"action": "attack",
-		"user_id": 0,
-		"target_id": 100
-	},
-	"移动": {
-		"command": "action",
-		"action": "move",
-		"position": [1,2,3]
-	},
 	"重置": {
 		"command": "reset"
 	},
 	"态势": {
 		"command": "observation"
+	},
+	"移动": {
+		"move": {
+			"self": 10,
+			"point": [0,0,0]
+		}
 	}
 }

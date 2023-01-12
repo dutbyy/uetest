@@ -46,19 +46,32 @@ class UETestClient:
         return {"reset": "ok"}
 
     def obs(self):
+        print("exec obs")
         ret = self.client.request_observation()
         print("ret is ", ret)
         response = self.decode(ret.observation.observation)
+        print('***************************************************')
+        print(response)
+        print('***************************************************')
         return {"observation": response}
 
     def execute(self, eval_data):
+        print("execute: ", eval_data)
         if eval_data.get("command", None) == 'reset':
             return self.reset() 
         elif eval_data.get("command", None) == 'observation':
             return self.obs() 
+        print("before encode")
         request = self.encode(eval_data)
+        print("----------request----------")
+        print(request)
+        print("----------request----------")
+
         ret = self.client.request_action(RequestAction(request=request))
         response = self.decode(ret.action.observation)
+        print("----------response----------")
+        print(ret)
+        print("----------response----------")
         return response
 
     def decode(self, item):
@@ -66,10 +79,10 @@ class UETestClient:
             k = item.name 
             v = {}
             for ent in item.entities:
-                p,j = self.decode(self, ent)
+                p,j = self.decode(ent)
                 v[p] = j
             for fld in item.fields:
-                p,j = self.decode(self, fld)
+                p,j = self.decode(fld)
                 v[p] = j
             if k == "":
                 return v
@@ -78,27 +91,35 @@ class UETestClient:
         elif isinstance(item, Field):
             k = item.name
             if item.type in [0, 1]:
-                v = item.iv
+                v = list(item.iv)
+                v = v[0] if len(v)==1 else v 
             elif item.type in [2, 3]:
-                v = item.dv
+                v = list(item.dv)
+                v = v[0] if len(v)==1 else v 
             elif item.type in [4, 5]:
-                v = item.bv
+                v = item.bv.__str__()
             return k, v
 
     def encode(self, eval_data):
         request = self.auto_gen("", eval_data)
+        print("encode over", request)
         return request
 
     def auto_gen(self, name, obj):
+        print(f'auto gen {name}: {obj}')
         if isinstance(obj, dict):
             entity = Entity()
             entity.name = name
             for k, v in obj.items():
                 item = self.auto_gen(k, v)
                 if isinstance(item, Entity):
-                    entity.entities.append(entity)
+                    print('item is Entity', item.name)
+                    entity.entities.append(item)
+                    print('item Entity append finished')
                 elif isinstance(item, Field):
+                    print('item is Field', item.name)
                     entity.fields.append(item)
+            print(entity)
             return entity
         else:
             field = self.gen_field(name, obj)
@@ -121,7 +142,9 @@ class UETestClient:
             field.bv.extend([bytes(it, encoding='utf8') for it in v if len(it)])
         else :
             print(f"Error Types, key: {k} type of v is {type(v_it)}")
-            exit()
+            # exit()
+            # exit()
+        # print(field)
         return field
 
 def execute():

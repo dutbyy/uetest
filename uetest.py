@@ -78,7 +78,9 @@ def exec_command(jstr):
     except Exception as e:
         return jsonfy({"msg": "json串异常",'err_code': 2,})
     try:
+        print("execute command: \n", req)
         ret = client.execute(req)
+        print("Execute over !!!")
     except Exception as e:
         return jsonfy({"msg": f"\n\t{e.details()}  \n\t{e.debug_error_string()}", 'err_code': 100,})
     return jsonfy({"msg": "success", "err_code": 0, "response": ret})
