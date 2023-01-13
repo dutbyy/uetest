@@ -48,8 +48,8 @@ class UETestClient:
     def obs(self):
         print("exec obs")
         ret = self.client.request_observation()
-        print("ret is ", ret)
-        response = self.decode(ret.observation.observation)
+        print("ret is ", ret.observation.observation)
+        _, response = self.decode(ret.observation.observation)
         print('***************************************************')
         print(response)
         print('***************************************************')
@@ -75,20 +75,8 @@ class UETestClient:
         return response
 
     def decode(self, item):
-        if isinstance(item, Entity):
-            k = item.name 
-            v = {}
-            for ent in item.entities:
-                p,j = self.decode(ent)
-                v[p] = j
-            for fld in item.fields:
-                p,j = self.decode(fld)
-                v[p] = j
-            if k == "":
-                return v
-            else:
-                return k, v
-        elif isinstance(item, Field):
+        if isinstance(item, Field):
+            print("field: ", item.name)
             k = item.name
             if item.type in [0, 1]:
                 v = list(item.iv)
@@ -99,6 +87,25 @@ class UETestClient:
             elif item.type in [4, 5]:
                 v = item.bv.__str__()
             return k, v
+        elif isinstance(item, Entity):
+            print("entity: ", item.name)
+            k = item.name 
+            v = {}
+            for ent in item.entities:
+                p,j = self.decode(ent)
+                if p == "":
+                    p = 'entities'
+                if p not in v:
+                    v[p] = []
+                v[p].append(j)
+            for fld in item.fields:
+                p,j = self.decode(fld)
+                v[p] = j
+            if k == "":
+                return "", v
+            else:
+                return k, v
+        
 
     def encode(self, eval_data):
         request = self.auto_gen("", eval_data)
