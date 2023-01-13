@@ -153,16 +153,3 @@ class UETestClient:
             # exit()
         # print(field)
         return field
-
-def execute():
-    import os
-    host = os.popen("cat /etc/resolv.conf |grep nameserver |awk '{print $2}'").read().strip()
-    client = RenderClient("172.1.1.84", "60060")
-
-
-if __name__ == '__main__':
-    while True:
-        if 1:
-            execute()
-        #except:
-            time.sleep(5)

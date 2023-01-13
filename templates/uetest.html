@@ -38,7 +38,7 @@
         </div>
         <div name="connector" style="width:50%; float:left;"> 
             <form name="myForm" > 
-                <label for="host">host:</label> <input type="text" size="16" style="font-family:Consolas;font-size:16" id="host" name="host" value="127.0.0.1">
+                <label for="host">host:</label> <input type="text" size="16" style="font-family:Consolas;font-size:16" id="host" name="host" value="localhost">
                 <label for="port">port:</label> <input type="text" size="6"  style="font-family:Consolas;font-size:16" id="port" name="port" value="50051">
                 <input type="button" onclick="connect(host, port)" id="conn_button" value="连接">
                 <input type="button" onclick="disconnect()" id='disconn_button' disabled=1 value="断开">
@@ -59,8 +59,8 @@
                 <span>Response </span> 
                 <input type="button"  onclick="clear_out()" value="清空"> </input> 
                 <br>
-                <!-- <textarea type='text' style = "font-family:Consolas;font-size:20;height:200px;width:80%;word-break:break-all;" id='output'>  </textarea> -->
-                <pre type='text' style = "font-family:Consolas;font-size:20;height:400px;width:80%;word-break:break-all;" id='output'>  </pre> 
+                <textarea type='text' style="font-family:Consolas;font-size:20;height:400px;width:80%;word-break:break-all;" id='output'>  </textarea>
+                <!-- <pre type='text' style = "font-family:Consolas;font-size:20;height:400px;width:80%;word-break:break-all;" id='output'>  </pre>  -->
             </div>
         </form>
     </div>

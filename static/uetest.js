@@ -98,7 +98,8 @@ function send_request(request)
     if (request.value.replace(/ /g, "") == "")
     {
         console.log("request is None")
-        document.getElementById('output').innerHTML = "请输入非空的请求";
+        // document.getElementById('output').innerHTML = "请输入非空的请求";
+        document.getElementById('output').value = "请输入非空的请求";
         alert( "请输入非空的请求")
         return;
     }
@@ -113,7 +114,9 @@ function send_request(request)
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
         {
             var info = xmlhttp.responseText;
-            document.getElementById('output').innerHTML = prettyJson(info);
+            // document.getElementById('output').innerHTML = prettyJson(info);
+            // document.getElementById('output').value = prettyJson(info);
+            document.getElementById('output').value = info;
             ret = JSON.parse(info)
             console.log(ret)
             if (ret['err_code'] == 100) { tdisconnect() }

@@ -1,14 +1,52 @@
 {
+	"攻击": {
+		"commandattack": {
+			"unit_id": 1,
+			"attack_target_id": 100
+		},
+		"commandmove": {
+			"unit_id": 1,
+			"position": [
+				1,
+				2,
+				3
+			]
+		}
+	},
+	"移动": {
+		"command": "action",
+		"action": "move",
+		"position": [
+			1,
+			2,
+			3
+		]
+	},
 	"重置": {
-		"command": "reset"
+		"resetenv": {
+			"file": "HY"
+		}
 	},
 	"态势": {
 		"command": "observation"
 	},
-	"移动": {
-		"move": {
-			"self": 10,
-			"point": [0,0,0]
+	"传感器设置": {
+		"sensordata": {
+			"unit_id": 1,
+			"sensor_type": 4,
+			"enable": true,
+			"sensor_no": 1302,
+			"a_index": 3,
+			"transmitter_power": 90.0
+		}
+	},
+	"创建单位": {
+		"createunit": {
+			"basetype": 5,
+			"no": 10001,
+			"camp": 2,
+			"pos": [0,0,0],
+			"rotation": [0,0,0]
 		}
 	}
 }
